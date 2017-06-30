@@ -1,0 +1,55 @@
+<div class = "container bkg" style = "margin-top: 100px"><center>
+    <h1 styles = "center">인생 한방이다</h1><br>
+    <button id = "a" class = "glyphicon btn btn-primary">아우디 뽑자</button><br>
+    <div class = lotto_show>
+        <h3> 내 로또번호 </h3>
+        <h3 id = "lotto_0"></h3>
+        <h3 id = "lotto_1" ></h3>
+        <h3 id = "lotto_2"></h3>
+        <h3 id = "lotto_3"></h3>
+        <h3 id = "lotto_4"></h3>
+        <h3 id = "lotto_5"></h3>
+    </div>
+    <br>
+
+    <h2>이번주 로또 번호는 <%=@lotto_num %>이고, 보너스 번호 <%=@lotto_hash["bnusNo"]%></h2>
+    <h2>겹치는 번호는 <%=@match_number%> 입니다 </h2>
+    <h2>결과는 <%=@result%> 입니다 </h2>
+</center></div>
+<script>
+    var lotto_num = <%=@my_lotto%>;
+                    
+    for(var i in lotto_num) 
+    {
+        if(lotto_num[i] < 11)
+        {
+            $("#lotto_"+i).html(lotto_num[i]);
+            $("#lotto_"+i).addClass("circleY");
+        }
+        else if(lotto_num[i] < 21)
+        {
+            $("#lotto_"+i).text(lotto_num[i]);
+            $("#lotto_"+i).addClass("circleB");
+        }
+        else if(lotto_num[i] < 31)
+        {
+            $("#lotto_"+i).text(lotto_num[i]);
+            $("#lotto_"+i).addClass("circleR");
+        }
+        else if(lotto_num[i] < 41)
+        {
+            $("#lotto_"+i).text(lotto_num[i]);
+            $("#lotto_"+i).addClass("circleGy");
+        }
+        else
+        {
+            $("#lotto_"+i).text(lotto_num[i]);
+            $("#lotto_"+i).addClass("circleGn");
+        }
+    }
+    
+    $('#a').click(function() 
+    {
+        location.reload();
+    });
+</script>
